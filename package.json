@@ -1,0 +1,45 @@
+{
+  "name": "sutara-prediction-protocol",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Decentralized prediction markets on Solana — TxLINE Hackathon",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "keeper",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev": "npm run dev --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:anchor": "anchor test",
+    "clean": "npm run clean --workspaces --if-present && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "anchor:build": "anchor build",
+    "anchor:deploy:devnet": "anchor deploy --provider.cluster devnet",
+    "anchor:deploy:mainnet": "anchor deploy --provider.cluster mainnet",
+    "db:migrate": "npm run db:migrate --workspace=backend",
+    "db:generate": "npm run db:generate --workspace=backend",
+    "docker:dev": "docker compose -f docker-compose.yml up -d",
+    "docker:down": "docker compose -f docker-compose.yml down",
+    "docker:logs": "docker compose -f docker-compose.yml logs -f"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.2"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "all",
+    "tabWidth": 2
+  }
+}
